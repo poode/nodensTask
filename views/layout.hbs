@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html dir="rtl" lang="ar">
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+  <title>NODENS TASK</title>
+  <!-- Tell the browser to be responsive to screen width -->
+  <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+  <!-- Bootstrap 3.3.4 -->
+  <link rel="stylesheet" href="/bootstrap/css/bootstrap.min.css">
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="/dist/css/font-awesome.min.css">
+  <!-- Ionicons -->
+  <link rel="stylesheet" href="/dist/css/ionicons.min.css">
+  <!-- Theme style -->
+  <link rel="stylesheet" href="/dist/css/AdminLTE.min.css">
+  <link rel="stylesheet" href="/stylesheets/Chart.min.css">
+  <!-- AdminLTE Skins. Choose a skin from the css/skins
+         folder instead of downloading all of them to reduce the load. -->
+  <link rel="stylesheet" href="/dist/css/skins/_all-skins.min.css">
+  <link rel="stylesheet" href="/stylesheets/daterangepicker.css">
+  <link rel="stylesheet" href="/stylesheets/select2.min.css">
+  <link rel="stylesheet" href="/plugins/datatables/jquery.dataTables.css">
+  <link rel="stylesheet" href="/plugins/datatables/dataTables.bootstrap.css">
+  <link rel="stylesheet" href="/stylesheets/sweetalert2.min.css">
+
+  <link rel="stylesheet" href="/stylesheets/buttons.dataTables.min.css" class="rel">
+  <link rel="stylesheet" href="/stylesheets/style.css">
+
+  <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+  <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+  <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+        <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+</head>
+
+<body class="skin-blue sidebar-mini">
+  <!-- Site wrapper -->
+  {{!-- <div class="wrapper"> --}}
+
+    <header class="main-header">
+      <!-- Header Navbar: style can be found in header.less -->
+      <nav class="navbar navbar-static-top" role="navigation" style="margin-right: 0px;">
+        <div class=" navbar-custom-menu">
+          <ul class="nav navbar-nav">
+              <!-- Notifications: style can be found in dropdown.less -->
+              <li class="dropdown notifications-menu">
+                <a  href="#" onclick="goStart();">
+                  <i  class="fa fa-reply"></i>
+                  تسجيل الخروج
+                </a>
+              </li>
+            </ul>
+        </div>
+        <div class=" navbar-custom-menu pull-right">
+          <ul class="nav navbar-nav">
+              <!-- Notifications: style can be found in dropdown.less -->
+              <li class="dropdown notifications-menu">
+                <a  href="#" style="padding: 10px;">
+                  <h5 id="username"></h5>
+                </a>
+              </li>
+
+            </ul>
+        </div>
+      </nav>
+    </header>
+
+    <!-- =============================================== -->
+
+    
+
+    <!-- =============================================== -->
+
+    <!-- Content Wrapper. Contains page content -->
+    <div class="content-wrapper" style="margin-right: 0px;">
+        <section class="content">
+          {{{body}}}
+        </section>
+    <!-- Add the sidebar's background. This div must be placed
+           immediately after the control sidebar -->
+
+  {{!-- </div><!-- ./wrapper --> --}}
+
+    <footer class="main-footer" style="text-align: center; margin-right: 0px; margin-top: 216px;">
+        copyrights 2020
+      <div class="pull-right hidden-xs">
+      </div>
+    </footer>
+  <form action="/logout" method="post" hidden id="logout"></form>
+  <!-- jQuery 2.1.4 -->
+  <script src="/plugins/jQuery/jQuery-2.1.4.min.js"></script>
+  <!-- Bootstrap 3.3.4 -->
+  <script src="/bootstrap/js/bootstrap.min.js"></script>
+  <!-- SlimScroll -->
+  <script src="/plugins/slimScroll/jquery.slimscroll.min.js"></script>
+  <!-- FastClick -->
+  <script src="/plugins/fastclick/fastclick.min.js"></script>
+  <script src="/javascripts/sweetalert2.min.js"></script>
+  <script src="/javascripts/main.js"></script>
+  <script>
+    function goStart() {
+      Swal.fire({
+          type: 'info',
+          title: 'تم',
+          text: 'جاري معالجة الطلب',
+          showConfirmButton: false,
+          timer: 1500
+        }).then(() => {
+          setTimeout(() => {
+            $(document.querySelector('#logout')).submit();
+          }, 1000);
+        })
+    }
+  </script>
+  
+</body>
+
+</html>

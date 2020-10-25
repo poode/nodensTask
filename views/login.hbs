@@ -1,0 +1,161 @@
+<html>
+<head>
+  <style id="stndz-style"></style>
+  <meta charset="UTF-8">
+  <title>تسجيل الدخول</title>
+  <!-- Tell the browser to be responsive to screen width -->
+  <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+  <!-- Bootstrap 3.3.4 -->
+  <link rel="stylesheet" href="/bootstrap/css/bootstrap.min.css">
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+  <!-- Theme style -->
+  <link rel="stylesheet" href="/dist/css/AdminLTE.min.css">
+  <!-- iCheck -->
+  <link rel="stylesheet" href="/stylesheets/sweetalert2.min.css">
+
+  <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+  <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+  <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+        <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+</head>
+
+<body class="login-page" dir="rtl">
+  <div class="login-box box box-info">
+    <div class="login-logo">
+      <a href="/"><b>NODENS</b> TASK</a>
+    </div><!-- /.login-logo -->
+    <div class="login-box-body">
+      <p class="login-box-msg">تسجيل الدخول</p>
+      <form id="login" action="/login" method="post">
+        <div class="form-group has-feedback">
+          <label class="pull-right">:اسم المستخدم</label>
+          <input autocomplete="off" required type="text" name="username" class="form-control" placeholder="اسم المستخدم">
+          <span class="glyphicon glyphicon-user form-control-feedback"></span>
+        </div>
+        <div class="form-group has-feedback">
+          <label class="pull-right">:كلمة السر</label>
+          <input autocomplete="off" required name="password" type="password" class="form-control" placeholder="كلمة السر">
+          <span class="glyphicon glyphicon-lock form-control-feedback"></span>
+        </div>
+        <div class="row">
+          <div class="col-xs-4">
+            <button autocomplete="off" id="submitLogin" type="submit" class="btn btn-primary btn-rounded mb-4" style="padding: 5px;">
+              تسجيل دخول
+            </button>
+          </div>
+          <div class="col-xs-4 pull-right">
+            <a href="" class="btn btn-success btn-rounded mb-4" data-toggle="modal"
+              data-target="#modalRegisterForm">مستخدم
+              جديد</a>
+          </div><!-- /.col -->
+        </div>
+      </form>
+    </div><!-- /.login-box-body -->
+    <!-- register modal -->
+    <div class="modal fade" id="modalRegisterForm" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+      aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                aria-hidden="true">&times;</span></button>
+          </div>
+          <div class="modal-body">
+            <form autocomplete="off" id='register' role="form" method="POST" action="/register" enctype="application/x-www-form-urlencoded">
+              <div style="padding: 30px;">
+
+                <div class="form-group">
+                  <label>اسم المستخدم للدخول على النظام:</label>
+                  <input autocomplete="off" required type="text" class="form-control" name="username" placeholder="ادخل اسم المستخدم">
+
+                  <label>كلمة المرور:</label>
+                  <input autocomplete="off" required type="password" class="form-control" name="password" placeholder="ادخل كلمة المرور">
+
+                  <label>تأكيد كلمة المرور:</label>
+                  <input autocomplete="off" required type="password" class="form-control" name="confirmpassword" placeholder="ادخل كلمة المرور">
+
+                  <label>اسم المستخدم الأول:</label>
+                  <input autocomplete="off" required type="text" class="form-control" name="firstName"
+                    placeholder="ادخل اسم المستخدم الأول">
+
+                  <label>اسم المستخدم الثاني:</label>
+                  <input autocomplete="off" required type="text" class="form-control" name="lastName"
+                    placeholder="ادخل اسم المستخدم الثاني">
+                </div>
+                <div class="box-footer">
+                  <button autocomplete="off" id="submitRegister" type="submit" class="btn btn-primary btn-rounded mb-4">
+                    إدخال
+                  </button>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div><!-- /.modal-content -->
+      </div><!-- /.modal-dialog -->
+    </div><!-- /.modal -->
+
+  </div><!-- /.login-box -->
+  <!-- jQuery 2.1.4 -->
+  <script src="/plugins/jQuery/jQuery-2.1.4.min.js"></script>
+  <!-- Bootstrap 3.3.4 -->
+  <script src="/bootstrap/js/bootstrap.min.js"></script>
+  <!-- iCheck -->
+  <script src="/javascripts/sweetalert2.min.js"></script>
+  <script src="/javascripts/main.js"></script>
+  <script>
+    const passwordRef = $('input[name="password"]')
+    const confirmPasswordRef = $('input[name="confirmpassword"]');
+
+      let password, confirmPassword;
+      let isMatched;
+      const checkMatchedPw = (passRefTarget) => e => {
+        if (passRefTarget === 'password') password = e.target.value;
+        else confirmPassword = e.target.value;
+        if (password !== confirmPassword) {
+          isMatched = false;
+          console.log(isMatched)
+          return;
+        }
+        isMatched = true;
+        console.log(isMatched);
+      }
+      passwordRef.on('keyup', checkMatchedPw('password'));
+      confirmPasswordRef.on('keyup', checkMatchedPw('confirmPassword'));
+
+
+      const submission = (submitRef) => (e) => {
+      e.preventDefault();
+      Swal.fire({
+        type: 'info',
+        title: 'تم',
+        text: 'جاري معالجة الطلب',
+        showConfirmButton: false,
+        timer: 1000
+      }).then(() => {
+          console.log('submitRef', submitRef);
+          console.log('isMatchedPassword', isMatched);
+          if (!isMatched && submitRef === '#register') {
+            Swal.fire({
+              type: 'error',
+              title: 'خطأ',
+              text: 'من فضلك تأكد من كلمة المرور فهي غير متطابقة',
+              showConfirmButton: false,
+              timer: 2000
+            });
+          }
+          else $(document.querySelector(submitRef)).submit();
+      })
+    }
+    $('#submitLogin').on('click', submission('#login'));
+    $('#submitRegister').on('click', submission('#register'));
+
+
+  </script>
+
+
+</body>
+
+</html>

@@ -1,0 +1,29 @@
+{
+  "name": "enodens-task",
+  "version": "0.0.1",
+  "private": true,
+  "scripts": {
+    "start": "node ./bin/www",
+    "start:dev": "nodemon ./bin/www",
+    "db:create": "sequelize db:create",
+    "db:migrate": "sequelize db:migrate"
+  },
+  "dependencies": {
+    "ajv": "^6.10.2",
+    "ajv-errors": "^1.0.1",
+    "bcryptjs": "^2.4.3",
+    "cookie-parser": "~1.4.4",
+    "debug": "~2.6.9",
+    "dotenv": "^8.1.0",
+    "express": "~4.16.1",
+    "express-formidable": "^1.2.0",
+    "express-promise-router": "^3.0.3",
+    "hbs": "^4.0.6",
+    "jsonwebtoken": "^8.5.1",
+    "morgan": "~1.9.1",
+    "mysql2": "^2.2.5",
+    "nodemon": "^2.0.6",
+    "sequelize": "^5.15.2",
+    "sequelize-cli": "^6.2.0"
+  }
+}

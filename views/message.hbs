@@ -1,0 +1,27 @@
+<!-- Main content -->
+<section class="content">
+  {{#if success}}
+    <div class="row">
+    <div class="callout callout-success">
+      <h4>تم بنجاح!</h4>
+      <p>تم التسجيل بنجاح.</p>
+    </div>
+  </div>
+  {{/if}}
+  {{#if error}}
+    <div class="row">
+    <div class="callout callout-danger">
+      <h4>هناك خطأ ما!</h4>
+      {{#each error}}
+      <p>{{message}}</p>
+      {{/each}}
+      <p>{{message}}</p>
+    </div>
+  </div>
+  <div class="row">
+    <button class="btn btn-primary" type="button" onclick="window.history.back();">
+      رجوع
+    </button>
+  </div>
+  {{/if}}
+</section><!-- /.content -->

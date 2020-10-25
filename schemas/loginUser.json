@@ -1,0 +1,21 @@
+{
+  "type": "object",
+  "required": [
+    "username",
+    "password"
+  ],
+  "properties": {
+      "username": {
+          "type": "string",
+          "minLength": 3,
+          "maxLength": 255,
+          "errorMessage": "يجب إدخال اسم المستخدم و يتكون من ثلاث ارقام على الأقل"
+      },
+      "password": {
+          "type": "string",
+          "minLength": 6,
+          "maxLength": 255,
+          "errorMessage": "يجب إدخال كلمة السر و تتكون من 6 حروف على الأقل"
+      }
+  }
+}
