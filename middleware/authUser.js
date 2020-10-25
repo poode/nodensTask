@@ -22,7 +22,6 @@ exports.authUser =  (req, res, next) => {
 }
 
 exports.checkToken = (req, res, next) => {
-  console.log('>>>>> Token exists >>>>>', req.signedCookies.token)
   if (req.originalUrl === '/') {
     if(!req.signedCookies.token){
       return res.redirect('/login');

@@ -11,6 +11,10 @@ const { ServerError } = require('./util/ServerError');
 
 const app = express();
 app.disable('x-powered-by');
+// to disable any forgotten console
+if (process.env.NODE_ENV === 'production') {
+  console.log = () => {}
+}
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -36,10 +40,6 @@ app.use(function(req, res, next) {
 
 // error handler
 app.use(function(err, req, res, next) {
-  console.log('Error Name >>>>>>>>', err.name)
-  console.log('Requested URL >>>>>>>>>', req.url)
-  // console.log('Normal Error >>>>>>>>>>', err )
-
   // if no status then this error should mot be handled and let it bubble up
   // to fix it
   if(!err.status) {
@@ -53,5 +53,4 @@ app.use(function(err, req, res, next) {
   res.status(err.status);
   res.render('message', { error: err.message });
 });
-
 module.exports = { app };
