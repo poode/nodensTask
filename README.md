@@ -9,6 +9,8 @@ and Run below Command:
 
 > npm run db:migrate
 
+> npm run test
+
 then Start Server using below command:
 > npm start
 
