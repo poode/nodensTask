@@ -54,6 +54,18 @@ describe('Go to message Page to show Wrong Password', function() {
   });
 });
 
+
+describe('Go to message Page to show not found username message', function() {
+  it('Shows The message page if the user is authenticated with not found username', function (done) {
+    request(app)
+      .post('/login')
+      .send({ username: 'testUserr', password: '123456'})
+      .expect(404)
+      .redirects('/message')
+      .expect(/هناك خطأ/, done);
+  });
+});
+
 describe('Go to message Page to show validation messages', function() {
   it('Shows The message page if the login form submitted with empty form property', function (done) {
     request(app)
