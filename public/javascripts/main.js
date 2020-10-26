@@ -1,5 +1,5 @@
   // this to render errors in message view correctly without nav bar, or footer
-  if (document.location.href !== 'http://localhost:3000/') {
+  if (document.location.href !== `${document.location.origin}/`) {
     const content = document.querySelector('.content-wrapper');
     if (content) {
       const body = content.children[0].innerHTML;
